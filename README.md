@@ -2,8 +2,7 @@
 
 Personal portfolio website showcasing projects, skills, and resume.
 
-## Live Demo
-(Add your deployed link here after hosting on GitHub Pages / Netlify / Vercel)
+## Live Demo:https://subrat-meher-portfolio.netlify.app/
 
 ## Tech
 - HTML, CSS, JavaScript (single-file, no build step required)
