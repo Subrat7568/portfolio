@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Subrat Meher — Aspiring Software Engineer</title>
+<meta name="description" content="Portfolio of Subrat Meher, an Electronics &amp; Telecommunication Engineering student building toward a software engineering internship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EFEAE0;
+    --surface: #E4DDCC;
+    --surface-line: #D6CCB4;
+    --text: #221F1A;
+    --text-muted: #6E6656;
+    --accent: #A8601F;
+    --accent-2: #3E6F69;
+    --rule: #CFC5AC;
+    --focus: #3E6F69;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12181A;
+      --surface: #1B2422;
+      --surface-line: #263230;
+      --text: #ECE7DD;
+      --text-muted: #99A099;
+      --accent: #D08B4A;
+      --accent-2: #6FA69F;
+      --rule: #293330;
+      --focus: #6FA69F;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #12181A;
+    --surface: #1B2422;
+    --surface-line: #263230;
+    --text: #ECE7DD;
+    --text-muted: #99A099;
+    --accent: #D08B4A;
+    --accent-2: #6FA69F;
+    --rule: #293330;
+    --focus: #6FA69F;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(2rem + env(safe-area-inset-top, 0px));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  h1, h2, h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .layout {
+    display: flex;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Rail / nav ---------- */
+  .rail {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 236px;
+    flex-shrink: 0;
+    padding: 2.75rem 1.75rem 2rem;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rail-mark {
+    font-family: "Fraunces", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .rail-role {
+    margin-top: 0.35rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    max-width: 15ch;
+    line-height: 1.45;
+  }
+
+  .rail-nav {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .rail-nav a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    transition: color 0.15s ease;
+  }
+
+  .rail-nav a .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--rule);
+    flex-shrink: 0;
+    transition: background 0.15s ease;
+  }
+
+  .rail-nav a:hover,
+  .rail-nav a.active {
+    color: var(--text);
+  }
+
+  .rail-nav a.active .dot {
+    background: var(--accent);
+  }
+
+  .rail-links {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding-top: 2rem;
+  }
+
+  .rail-links a {
+    font-size: 0.82rem;
+    text-decoration: none;
+    color: var(--text-muted);
+  }
+  .rail-links a:hover { color: var(--accent-2); }
+
+  .rail-print {
+    margin-top: 1.1rem;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.82rem;
+    padding: 0.55rem 0.8rem;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 3px;
+  }
+  .rail-print:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- Mobile top bar ---------- */
+  .topbar { display: none; }
+
+  /* ---------- Main content ---------- */
+  main {
+    flex: 1;
+    min-width: 0;
+    padding: 6.5rem 3rem 6rem 4rem;
+  }
+
+  section { max-width: 640px; }
+  section + section { margin-top: 6.5rem; }
+
+  .kicker {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--accent-2);
+    margin-bottom: 1rem;
+  }
+
+  /* Hero */
+  #hero h1 {
+    font-size: clamp(2.1rem, 4vw, 2.9rem);
+    line-height: 1.12;
+    max-width: 14ch;
+  }
+
+  .hero-sub {
+    margin-top: 1.4rem;
+    max-width: 54ch;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+  }
+
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.2rem;
+    margin-top: 2.6rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .stat b {
+    font-family: "Fraunces", serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: block;
+  }
+  .stat span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* About */
+  #about p { max-width: 58ch; }
+  #about p + p { margin-top: 1rem; }
+
+  /* Skills */
+  .skill-grid {
+    margin-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+  }
+  .skill-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .skill-row .label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .skill-row .value { font-size: 0.96rem; }
+
+  /* Projects */
+  .project {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.9rem 2rem;
+    background: var(--surface);
+  }
+  .project + .project { margin-top: 1.75rem; }
+
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project h3 { font-size: 1.35rem; }
+
+  .project-stack {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.74rem;
+    color: var(--accent-2);
+    white-space: nowrap;
+  }
+
+  .project-fields {
+    margin-top: 1.35rem;
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    row-gap: 0.85rem;
+    column-gap: 1rem;
+  }
+
+  .project-fields dt {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    padding-top: 0.15rem;
+  }
+  .project-fields dd {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .project-link {
+    display: inline-block;
+    margin-top: 1.4rem;
+    font-size: 0.86rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    color: var(--accent);
+    padding-bottom: 1px;
+  }
+  .project-link:hover { color: var(--accent-2); border-color: var(--accent-2); }
+
+  /* DSA progress */
+  .track {
+    margin-top: 1.8rem;
+    border-left: 2px solid var(--rule);
+    padding-left: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+  .track-item {
+    position: relative;
+  }
+  .track-item::before {
+    content: "";
+    position: absolute;
+    left: -1.85rem;
+    top: 0.35rem;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--rule);
+  }
+  .track-item.done::before { background: var(--accent-2); }
+  .track-item.current::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+  .track-item .t-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: lowercase;
+  }
+  .track-item .t-title { font-size: 1rem; margin-top: 0.15rem; }
+
+  .progress-note {
+    margin-top: 1.6rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    max-width: 54ch;
+  }
+
+  /* Contact */
+  .contact-list {
+    margin-top: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .contact-list a {
+    text-decoration: none;
+    font-size: 1.05rem;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    width: fit-content;
+    border-bottom: 1px solid transparent;
+  }
+  .contact-list a .clabel {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    min-width: 4.2rem;
+  }
+  .contact-list a:hover { border-bottom-color: var(--accent); }
+
+  footer {
+    margin-top: 6rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    max-width: 640px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .rail { display: none; }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      padding: calc(1rem + env(safe-area-inset-top, 0px)) 1.25rem 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .topbar .rail-mark { font-size: 1.15rem; }
+    .topbar nav {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+    }
+    .topbar nav a { text-decoration: none; color: var(--text-muted); white-space: nowrap; }
+    main { padding: 3rem 1.4rem 4rem; }
+    section + section { margin-top: 4.5rem; }
+    .skill-row, .project-fields { grid-template-columns: 110px 1fr; }
+  }
+
+  /* ---------- Print résumé ---------- */
+  .print-resume { display: none; }
+
+  @media print {
+    body * { visibility: hidden; }
+    .print-resume, .print-resume * { visibility: visible; }
+    .print-resume {
+      display: block;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      color: #111;
+      background: #fff;
+      font-family: "IBM Plex Sans", Arial, sans-serif;
+      padding: 0.4in 0.55in;
+    }
+    .print-resume h1 { font-family: "Fraunces", Georgia, serif; font-size: 22pt; margin-bottom: 2pt; }
+    .print-resume .p-role { font-size: 10.5pt; font-style: italic; color: #333; margin-bottom: 8pt; }
+    .print-resume .p-contact { font-size: 9.5pt; color: #333; margin-bottom: 16pt; }
+    .print-resume h2 { font-size: 11.5pt; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid #999; padding-bottom: 3pt; margin-top: 16pt; margin-bottom: 8pt; }
+    .print-resume h3 { font-size: 11pt; margin-bottom: 1pt; }
+    .print-resume .p-meta { font-size: 9pt; font-style: italic; color: #444; margin-bottom: 4pt; }
+    .print-resume ul { margin: 0 0 10pt 16pt; padding: 0; font-size: 10pt; }
+    .print-resume li { margin-bottom: 3pt; }
+    .print-resume p { font-size: 10pt; margin: 0 0 6pt; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="rail-mark">SM</span>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#progress">Progress</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<div class="layout">
+  <aside class="rail">
+    <div>
+      <div class="rail-mark">Subrat Meher</div>
+      <div class="rail-role">Electronics &amp; Telecom student, building software</div>
+    </div>
+    <nav class="rail-nav" id="rail-nav">
+      <a href="#hero" class="active"><span class="dot"></span>Intro</a>
+      <a href="#about"><span class="dot"></span>About</a>
+      <a href="#skills"><span class="dot"></span>Skills</a>
+      <a href="#projects"><span class="dot"></span>Projects</a>
+      <a href="#progress"><span class="dot"></span>DSA progress</a>
+      <a href="#contact"><span class="dot"></span>Contact</a>
+    </nav>
+    <div class="rail-links">
+      <a href="https://github.com/Subrat7568" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/subrat-meher-b70baa38b" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:mehersubrat7568@gmail.com">Email</a>
+      <button class="rail-print" onclick="window.print()">Download résumé (PDF)</button>
+    </div>
+  </aside>
+
+  <main>
+    <section id="hero">
+      <div class="kicker">Bhubaneswar, Odisha</div>
+      <h1>Trained in circuits.<br>Building in code.</h1>
+      <p class="hero-sub">
+        I'm a second-year Electronics &amp; Telecommunication Engineering student at IIIT Bhubaneswar.
+        My coursework runs through signals and circuits, but the work I actually chase after hours
+        is software — Python, C++, and a growing interest in applying AI tools to real problems.
+        I'm building toward a software engineering internship before my third year starts.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><b>2</b><span>Projects shipped</span></div>
+        <div class="stat"><b>30+</b><span>DSA problems solved</span></div>
+        <div class="stat"><b>~30%</b><span>Revision time cut, self-tested</span></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="kicker">About</div>
+      <h2>Why a telecom student is chasing software roles</h2>
+      <p>
+        Electronics and Telecommunication gave me a solid grounding in how systems actually work
+        underneath — signals, hardware, the physical layer most software never has to think about.
+        Somewhere in the first year, though, I found I enjoyed the software side of every lab far
+        more than the hardware side: writing the logic, shipping something a person could actually
+        use, watching a program go from idea to working tool.
+      </p>
+      <p>
+        Since then I've been building that skill deliberately outside class — two working projects,
+        a steady DSA habit, and hands-on time with LLM APIs and prompt engineering. The goal is
+        concrete: land a software engineering internship by the end of second year, and keep building
+        from there.
+      </p>
+    </section>
+
+    <section id="skills">
+      <div class="kicker">Skills</div>
+      <h2>What I work with</h2>
+      <div class="skill-grid">
+        <div class="skill-row">
+          <div class="label">languages</div>
+          <div class="value">C++, C, Python, Java, SQL</div>
+        </div>
+        <div class="skill-row">
+          <div class="label">web</div>
+          <div class="value">HTML, CSS, JavaScript</div>
+        </div>
+        <div class="skill-row">
+          <div class="label">ai &amp; tools</div>
+          <div class="value">LLM APIs (OpenAI), prompt engineering, Git &amp; GitHub</div>
+        </div>
+        <div class="skill-row">
+          <div class="label">foundations</div>
+          <div class="value">Data structures &amp; algorithms, object-oriented programming, file I/O</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="kicker">Projects</div>
+      <h2>What I've built</h2>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>AI-Powered Study Platform</h3>
+          <div class="project-stack">Python · SQL · HTML · LLM API</div>
+        </div>
+        <dl class="project-fields">
+          <dt>Problem</dt>
+          <dd>Turning a topic or a stack of PDF notes into something you can actually self-test on takes
+            a lot of manual, repetitive work — writing questions, making flashcards, and keeping track
+            of what you've already reviewed.</dd>
+          <dt>Approach</dt>
+          <dd>Built a Python pipeline that feeds topics or uploaded PDF notes to an LLM API and gets back
+            quiz questions, flashcards, and summaries. Paired it with a SQL-backed layer that tracks
+            per-user progress and quiz history, and an HTML frontend for running the self-tests.</dd>
+          <dt>Outcome</dt>
+          <dd>Cut my own revision time by roughly 30% across three subjects by automating question
+            generation. Deployed and open-sourced the project on GitHub.</dd>
+        </dl>
+        <a class="project-link" href="https://github.com/Subrat7568" target="_blank" rel="noopener">Explore the code on GitHub</a>
+      </div>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>C++ OOP Doubt-Tracker</h3>
+          <div class="project-stack">C++ · OOP · File I/O</div>
+        </div>
+        <dl class="project-fields">
+          <dt>Problem</dt>
+          <dd>DSA prep throws up a steady stream of doubts and half-solved edge cases, and without a
+            system they get forgotten before you circle back to them.</dd>
+          <dt>Approach</dt>
+          <dd>Built a CLI doubt-tracking tool in C++ around a base <code>Doubt</code> class, extended per
+            subject and topic using inheritance and encapsulation. File I/O persists every doubt across
+            sessions, with tagging by topic and difficulty, keyword search, and resolved/unresolved
+            status tracking.</dd>
+          <dt>Outcome</dt>
+          <dd>Added a stats view that surfaces unresolved doubts by topic, so I know exactly what to
+            prioritize in the next review pass — built to directly support my own DSA prep.</dd>
+        </dl>
+        <a class="project-link" href="https://github.com/Subrat7568" target="_blank" rel="noopener">Explore the code on GitHub</a>
+      </div>
+    </section>
+
+    <section id="progress">
+      <div class="kicker">DSA progress</div>
+      <h2>Working through Striver's sheet</h2>
+      <div class="track">
+        <div class="track-item done">
+          <div class="t-label">covered</div>
+          <div class="t-title">Arrays</div>
+        </div>
+        <div class="track-item done">
+          <div class="t-label">covered</div>
+          <div class="t-title">Strings</div>
+        </div>
+        <div class="track-item done">
+          <div class="t-label">covered</div>
+          <div class="t-title">Recursion</div>
+        </div>
+        <div class="track-item done">
+          <div class="t-label">covered</div>
+          <div class="t-title">Basic linked lists</div>
+        </div>
+        <div class="track-item current">
+          <div class="t-label">in progress</div>
+          <div class="t-title">Trees</div>
+        </div>
+      </div>
+      <p class="progress-note">
+        Solving consistently via LeetCode and Striver's DSA Sheet — 30+ problems completed to date,
+        with a fresh problem added most days.
+      </p>
+    </section>
+
+    <section id="contact">
+      <div class="kicker">Contact</div>
+      <h2>Let's talk</h2>
+      <p class="hero-sub" style="margin-top:0.8rem;">
+        Open to software engineering internships and collaborations. The fastest way to reach me is email.
+      </p>
+      <div class="contact-list">
+        <a href="mailto:mehersubrat7568@gmail.com"><span class="clabel mono">email</span>mehersubrat7568@gmail.com</a>
+        <a href="https://github.com/Subrat7568" target="_blank" rel="noopener"><span class="clabel mono">github</span>github.com/Subrat7568</a>
+        <a href="https://linkedin.com/in/subrat-meher-b70baa38b" target="_blank" rel="noopener"><span class="clabel mono">linkedin</span>linkedin.com/in/subrat-meher-b70baa38b</a>
+      </div>
+      <footer>
+        Subrat Meher — B.Tech, Electronics &amp; Telecommunication Engineering, IIIT Bhubaneswar (expected 2028).
+      </footer>
+    </section>
+  </main>
+</div>
+
+<div class="print-resume">
+  <h1>Subrat Meher</h1>
+  <div class="p-role">Aspiring Software Engineer — C++, Python, Web Development, AI Tools</div>
+  <div class="p-contact">Bhubaneswar, Odisha &nbsp;|&nbsp; mehersubrat7568@gmail.com &nbsp;|&nbsp; github.com/Subrat7568 &nbsp;|&nbsp; linkedin.com/in/subrat-meher-b70baa38b</div>
+
+  <h2>Education</h2>
+  <h3>International Institute of Information Technology, Bhubaneswar</h3>
+  <div class="p-meta">B.Tech, Electronics and Telecommunication Engineering — Expected 2028</div>
+
+  <h2>Technical Skills</h2>
+  <p><strong>Languages:</strong> C++, C, Python, Java, SQL</p>
+  <p><strong>Web Development:</strong> HTML, CSS, JavaScript</p>
+  <p><strong>AI &amp; Tools:</strong> LLM APIs (OpenAI), Prompt Engineering, Git/GitHub</p>
+  <p><strong>CS Fundamentals:</strong> Data Structures &amp; Algorithms, Object-Oriented Programming, File I/O</p>
+
+  <h2>Projects</h2>
+  <h3>AI-Powered Study Platform</h3>
+  <div class="p-meta">Python, SQL, HTML, LLM API</div>
+  <ul>
+    <li>Built an AI-powered study platform in Python that converts topics or uploaded PDF notes into auto-generated quiz questions, flashcards, and summaries via an LLM API.</li>
+    <li>Designed a SQL-backed system to track user progress and quiz history, paired with an HTML frontend for an interactive self-testing interface.</li>
+    <li>Cut personal revision time by ~30% across 3 subjects by automating question generation; deployed and open-sourced the project on GitHub.</li>
+  </ul>
+  <h3>C++ OOP Doubt-Tracker</h3>
+  <div class="p-meta">C++, OOP, File I/O</div>
+  <ul>
+    <li>Developed a CLI-based doubt-tracking system in C++ applying OOP principles (inheritance, encapsulation) via a base Doubt class extended per subject/topic.</li>
+    <li>Implemented file I/O to persist doubts across sessions, with tagging by topic/difficulty, keyword search, and resolved/unresolved status tracking.</li>
+    <li>Built to support personal DSA prep, adding a stats view that surfaces unresolved doubts by topic to prioritize review.</li>
+  </ul>
+
+  <h2>DSA Preparation</h2>
+  <ul>
+    <li>Solving problems consistently via LeetCode and Striver's DSA Sheet — ~30 problems completed to date.</li>
+    <li>Topics covered: Arrays, Strings, Recursion, and Basic Linked Lists; currently progressing into Trees.</li>
+  </ul>
+</div>
+
+<script>
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('#rail-nav a'));
+    var sections = links.map(function (l) { return document.querySelector(l.getAttribute('href')); });
+
+    function onScroll() {
+      var pos = window.scrollY + window.innerHeight * 0.35;
+      var activeIdx = 0;
+      sections.forEach(function (s, i) {
+        if (s && s.offsetTop <= pos) activeIdx = i;
+      });
+      links.forEach(function (l, i) {
+        l.classList.toggle('active', i === activeIdx);
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
