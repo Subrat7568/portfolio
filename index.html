@@ -452,6 +452,7 @@
   <nav>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
     <a href="#progress">Progress</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -467,6 +468,7 @@
       <a href="#hero" class="active"><span class="dot"></span>Intro</a>
       <a href="#about"><span class="dot"></span>About</a>
       <a href="#skills"><span class="dot"></span>Skills</a>
+      <a href="#projects"><span class="dot"></span>Projects</a>
       <a href="#progress"><span class="dot"></span>DSA progress</a>
       <a href="#contact"><span class="dot"></span>Contact</a>
     </nav>
@@ -534,6 +536,34 @@
     </section>
 
 
+    <section id="projects">
+      <div class="kicker">Projects</div>
+      <h2>What I've built</h2>
+
+      <div class="project">
+        <div class="project-head">
+          <h3>College Placement Data Analysis</h3>
+          <div class="project-stack">Python · Data Cleaning · EDA · HTML Dashboard</div>
+        </div>
+        <dl class="project-fields">
+          <dt>Problem</dt>
+          <dd>A placement dataset of 9,000 students had hidden quality issues, and it wasn't clear
+            whether branch, college tier or skills actually shaped placement outcomes.</dd>
+          <dt>Approach</dt>
+          <dd>Audited the raw data for duplicates, missing values and formatting problems, then cleaned
+            it with documented decisions (unplaced students' salary set to missing, resume scores capped
+            at 100, branch names standardised). Ran the analysis in Python scripts and built an
+            interactive HTML dashboard with tooltips and a light/dark theme toggle.</dd>
+          <dt>Outcome</dt>
+          <dd>Found that branch barely affects outcomes, while college tier does: 93.8% placement rate
+            for Tier 1 versus 76.0% for Tier 3. Also flagged that the data looks simulated, so absolute
+            salary figures should be read as directional.</dd>
+        </dl>
+        <a class="project-link" href="https://github.com/Subrat7568/PlacementAnalysis" target="_blank" rel="noopener">Explore the code on GitHub</a>
+        <a class="project-link" href="https://studentplacementanalysis.netlify.app/" target="_blank" rel="noopener">View live dashboard</a>
+      </div>
+    </section>
+
     <section id="progress">
       <div class="kicker">DSA progress</div>
       <h2>Working through Striver's sheet</h2>
@@ -598,6 +628,15 @@
   <p><strong>AI &amp; Tools:</strong> Claude and its tools (artifacts, connectors, projects, plugins, skills), Prompt Engineering, Git/GitHub</p>
   <p><strong>CS Fundamentals:</strong> Data Structures &amp; Algorithms, Object-Oriented Programming, File I/O</p>
 
+
+  <h2>Projects</h2>
+  <h3>College Placement Data Analysis</h3>
+  <div class="p-meta">Python, Data Cleaning, EDA, HTML Dashboard</div>
+  <ul>
+    <li>Audited and cleaned a 9,000-student placement dataset, documenting each decision (missing salaries, out-of-range resume scores, standardised branch names).</li>
+    <li>Found that branch barely affects outcomes while college tier does: 93.8% placement rate for Tier 1 vs 76.0% for Tier 3.</li>
+    <li>Built an interactive HTML dashboard and published the code on GitHub with a live demo.</li>
+  </ul>
 
   <h2>DSA Preparation</h2>
   <ul>
